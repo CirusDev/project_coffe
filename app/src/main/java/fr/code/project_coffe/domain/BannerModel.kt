@@ -1,3 +1,3 @@
 package fr.code.project_coffe.domain
 
-data class BannerModel()
+data class BannerModel(val url: String="")

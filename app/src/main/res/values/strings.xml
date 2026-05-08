@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">project_coffe</string>
+    <string name="see_all">See all</string>
+    <string name="poular_coffees">Poular Coffees</string>
+    <string name="category">Category</string>
+    <string name="wishlist">WishList</string>
+    <string name="my_order">My Order</string>
+    <string name="profile">Profile</string>
+    <string name="search_anything">Search anything</string>
 </resources>

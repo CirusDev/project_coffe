@@ -1,0 +1,73 @@
+package fr.code.project_coffe.activities
+
+import android.os.Bundle
+import android.view.View
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import fr.code.project_coffe.adapters.CategoryAdapter
+import fr.code.project_coffe.adapters.PopularAdapter
+import fr.code.project_coffe.databinding.ActivityMainBinding
+import fr.code.project_coffe.viewmodel.MainViewModel
+
+class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private val viewModel = MainViewModel()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+
+        binding= ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
+
+        initBanner()
+        initCategory()
+        initPopular()
+    }
+
+    private fun initPopular() {
+        binding.apply {
+            progressBarPopular.visibility = View.VISIBLE
+            viewModel.loadPopular().observeForever {
+                popularView.layoutManager = LinearLayoutManager(
+                    this@MainActivity,
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+                popularView.adapter = PopularAdapter(it)
+                progressBarPopular.visibility = View.GONE
+            }
+            viewModel.loadPopular()
+        }
+    }
+
+    private fun initCategory() {
+        binding.apply {
+            progressBarCategory.visibility = View.VISIBLE
+            viewModel.loadCategory().observeForever {
+                categoryView.adapter = CategoryAdapter( it )
+                categoryView.layoutManager = LinearLayoutManager( this@MainActivity,
+                    LinearLayoutManager.HORIZONTAL, false)
+                progressBarCategory.visibility = View.GONE
+
+            }
+            viewModel.loadCategory()
+        }
+    }
+
+    private fun initBanner() {
+        binding.apply {
+            progressBarBanner.visibility = View.VISIBLE
+            viewModel.loaderBanner().observeForever {
+                Glide.with(this@MainActivity)
+                    .load(it[0].url)
+                    .into(banner)
+                progressBarBanner.visibility = View.GONE
+            }
+            viewModel.loaderBanner()
+        }
+    }
+}
