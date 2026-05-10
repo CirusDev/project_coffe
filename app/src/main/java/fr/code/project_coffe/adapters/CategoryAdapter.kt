@@ -1,12 +1,15 @@
 package fr.code.project_coffe.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import fr.code.project_coffe.R
+import fr.code.project_coffe.activities.ItemsListActivity
 import fr.code.project_coffe.databinding.ViewholderCategoryBinding
 import fr.code.project_coffe.domain.CategoryModel
 
@@ -20,7 +23,7 @@ class CategoryAdapter(val items: MutableList<CategoryModel>): RecyclerView.Adapt
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CategoryAdapter.ViewHolder {
+    ): ViewHolder {
         context=parent.context
         val binding = ViewholderCategoryBinding.inflate(
             LayoutInflater.from(context),
@@ -31,7 +34,7 @@ class CategoryAdapter(val items: MutableList<CategoryModel>): RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(
-        holder: CategoryAdapter.ViewHolder,
+        holder: ViewHolder,
         position: Int
     ) {
         val item = items[position]
@@ -47,6 +50,11 @@ class CategoryAdapter(val items: MutableList<CategoryModel>): RecyclerView.Adapt
                 notifyItemChanged(selectedPosition)
 
                 Handler(Looper.getMainLooper()).postDelayed({
+                    val intent = Intent(context, ItemsListActivity::class.java).apply {
+                        putExtra("title", item.title)
+                        putExtra("id", item.id.toString())
+                    }
+                    ContextCompat.startActivity(context, intent, null)
 
                 }, 500)
             }
