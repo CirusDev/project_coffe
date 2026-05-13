@@ -4,15 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import fr.code.project_coffe.R
 import fr.code.project_coffe.adapters.ItemsListCategoryAdapter
-import fr.code.project_coffe.adapters.PopularAdapter
 import fr.code.project_coffe.databinding.ActivityItemsListBinding
-import fr.code.project_coffe.databinding.ActivitySplashBinding
 import fr.code.project_coffe.viewmodel.MainViewModel
 
 class ItemsListActivity : AppCompatActivity() {
@@ -41,6 +36,7 @@ class ItemsListActivity : AppCompatActivity() {
                     progressBar.visibility = View.GONE
                 })
             backBtn.setOnClickListener { finish() }
+            backView.setOnClickListener { finish() }
         }
     }
 

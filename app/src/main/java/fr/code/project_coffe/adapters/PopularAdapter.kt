@@ -1,10 +1,12 @@
 package fr.code.project_coffe.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import fr.code.project_coffe.activities.DetailActivity
 import fr.code.project_coffe.databinding.ViewholderPopularBinding
 import fr.code.project_coffe.domain.ItemsModel
 
@@ -15,7 +17,7 @@ class PopularAdapter(val items: MutableList<ItemsModel>): RecyclerView.Adapter<P
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): PopularAdapter.Viewholder {
+    ): Viewholder {
         context = parent.context
         val binding = ViewholderPopularBinding.inflate(
             LayoutInflater.from(context),
@@ -25,7 +27,7 @@ class PopularAdapter(val items: MutableList<ItemsModel>): RecyclerView.Adapter<P
         return Viewholder(binding)
     }
 
-    override fun onBindViewHolder(holder: PopularAdapter.Viewholder, position: Int) {
+    override fun onBindViewHolder(holder: Viewholder, position: Int) {
         holder.binding.titleTxt.text = items[position].title
         holder.binding.priceTxt.text = "$" + items[position].price.toString()
         holder.binding.subtitleTxt.text = items[position].extra
@@ -33,6 +35,12 @@ class PopularAdapter(val items: MutableList<ItemsModel>): RecyclerView.Adapter<P
         Glide.with(context)
             .load(items[position].picUrl[0])
             .into(holder.binding.pic)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("object", items[position])
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
