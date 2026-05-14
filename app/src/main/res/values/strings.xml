@@ -16,4 +16,6 @@
     <string name="qty">Qty</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="description">Description</string>
+    <string name="enter_your_discount_code">Enter your discount code</string>
+    <string name="checkout">Checkout</string>
 </resources>

@@ -3,8 +3,6 @@ package fr.code.project_coffe.activities
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import fr.code.project_coffe.Helper.ManagmentCart
 import fr.code.project_coffe.R
@@ -23,7 +21,7 @@ class DetailActivity : AppCompatActivity() {
 
         managementCart = ManagmentCart(this)
 
-        bundel()
+        bundle()
         initSizeList()
     }
 
@@ -50,7 +48,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun bundel() {
+    private fun bundle() {
         binding.apply {
             item = intent.getSerializableExtra("object") as ItemsModel
             Glide.with(this@DetailActivity)
