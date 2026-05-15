@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/deliveryTxt"
-    android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".activities.SplashActivity">
 
     <ImageView
@@ -22,13 +21,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Coffee \nShop"
-        android:textColor="@color/lightBrown"
-        android:textStyle="bold"
-        android:textSize="130sp"
         android:fontFamily="@font/stash"
-        android:textAlignment="center"
         android:lineSpacingExtra="20dp"
+        android:text="Coffee \nShop"
+        android:textAlignment="center"
+        android:textColor="@color/lightBrown"
+        android:textSize="130sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

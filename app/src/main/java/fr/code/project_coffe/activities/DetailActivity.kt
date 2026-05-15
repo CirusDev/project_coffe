@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import fr.code.project_coffe.Helper.ManagmentCart
+import fr.code.project_coffe.Helper.ManagementCart
 import fr.code.project_coffe.R
 import fr.code.project_coffe.databinding.ActivityDetailBinding
 import fr.code.project_coffe.domain.ItemsModel
@@ -12,14 +12,14 @@ import fr.code.project_coffe.domain.ItemsModel
 class DetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailBinding
     private lateinit var item: ItemsModel
-    private  lateinit var managementCart: ManagmentCart
+    private  lateinit var managementCart: ManagementCart
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        managementCart = ManagmentCart(this)
+        managementCart = ManagementCart(this)
 
         bundle()
         initSizeList()
